@@ -1,0 +1,42 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+.database/database.sqlite
+.idea/*
+/.git
+.DS_Store
+Thumbs.db
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+/public/images/thumb
+/public/uploads/*
+/public/assets/*
+/.sass-cache
+npm-debug.log
+=======
+=======
+>>>>>>> 1f98a2b8cc386a9dd705263a9f7f680643c6fcc8
+vendor/
+node_modules/
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+bootstrap/cache/
+.env.*.php
+.env.php
+.env
+
+# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+.rocketeer/
+<<<<<<< HEAD
+>>>>>>> 1f98a2b8cc386a9dd705263a9f7f680643c6fcc8
+=======
+>>>>>>> 1f98a2b8cc386a9dd705263a9f7f680643c6fcc8

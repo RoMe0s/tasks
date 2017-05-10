@@ -1,0 +1,60 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: rome0s
+ * Date: 08.05.17
+ * Time: 23:44
+ */
+
+namespace App\Services;
+
+use App\Models\User;
+use Illuminate\Http\UploadedFile;
+use Spatie\Permission\Models\Role;
+
+class UserService
+{
+
+    public function update($user, $data, UploadedFile $image = null) {
+
+       if(isset($image)) {
+
+           $path = 'images/users';
+
+           $name = $user->id . '.' . $image->clientExtension();
+
+           $image->move(public_path($path), $name);
+
+           $data['image'] = "/" . $path . "/" . $name;
+
+       }
+
+       $data = array_filter($data);
+
+       return $user->update($data) ? true : false;
+
+    }
+
+    public function create($input) {
+
+        if(!isset($input['role'])) return false;
+
+        $role = Role::find($input['role']);
+
+        if(!$role) return false;
+
+        $input['password'] = str_random(6);
+
+        $user = new User();
+
+        $user->fill($input);
+
+        $user->save();
+
+        $user->assignRole($role->name);
+
+        return $user;
+
+    }
+
+}

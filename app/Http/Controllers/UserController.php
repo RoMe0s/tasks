@@ -207,15 +207,16 @@ class UserController extends Controller
 
     }
 
-    public function updatePassword(UserUpdatePasswordRequest $request, User $user) {
+    public function updatePassword(UserUpdatePasswordRequest $request, int $id) {
 
-        $user->update([
-            'password' => $request->get('password')
+        User::where('id', $id)->update([
+            'password' => $request->get('password'),
+            'forgot_password' => 0
         ]);
 
         if($request->ajax()) {
 
-            return ['status' => 'success', 'message' => trans('labels.save ok')];
+            return ['status' => 'success', 'message' => trans('labels.save ok'), 'id' => $id];
 
         }
 

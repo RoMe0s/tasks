@@ -6,7 +6,7 @@
  * Time: 0:16
  */
 ?>
-<tr>
+<tr @if($real_user->forgot_password) class="bg-warning" @endif>
     <th scope="row">{!! $real_user->id !!}</th>
     <td>{!! $real_user->name !!}</td>
     <td>{!! $real_user->email !!}</td>

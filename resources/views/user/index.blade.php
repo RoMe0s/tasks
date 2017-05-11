@@ -141,9 +141,16 @@
 
         });
 
-        $(document).on('user-password-changed', function(e) {
+        $(document).on('user-password-changed', function(e, response) {
 
-            $(document).find('div.modal#changepassword').modal('hide');
+            if(response.id !== undefined &&
+            response.id !== null) {
+
+                $('div.tab-pane').find('table').find('td[data-user_settings][data-id="' + response.id + '"]').closest('tr').removeClass('bg-warning');
+
+                $(document).find('div.modal#changepassword').modal('hide');
+
+            }
 
         });
 

@@ -18,6 +18,17 @@ Route::group(['middleware' => 'auth'], function() {
         'as' => 'home',
         'uses' => 'ProjectController@index'
     ]);
+    Route::resource('project', 'ProjectController');
+    Route::post('project/{id}/share', [
+        'as' => 'project.share',
+        'uses' => 'ProjectController@share',
+        'middleware' => 'ajax'
+    ]);
+    Route::post('project/{id}/share/store', [
+        'as' => 'project.share.store',
+        'uses' => 'ProjectController@storeShare',
+        'middleware' => 'ajax'
+    ]);
     Route::group(['prefix' => 'profile'], function() {
        Route::get('/', [
            'as' => 'profile',

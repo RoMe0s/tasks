@@ -43,7 +43,7 @@ class Controller extends BaseController
      */
     public function render($view, $data = array()) {
     
-        $data += $this->data;
+        $data = array_merge($this->data, $data);
 
         return view($view)->with($data)->render();
     

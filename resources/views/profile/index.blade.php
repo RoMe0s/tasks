@@ -39,7 +39,9 @@
                         </div>
                         <div class="md-form file-field">
                             <div class="btn btn-primary btn-sm waves-effect waves-light">
-                                <span>выберите фото</span>
+                                <span>
+                                    @lang('labels.choose file')
+                                </span>
                                 {!! Form::file('image[file]') !!}
                             </div>
                             <div class="file-path-wrapper">

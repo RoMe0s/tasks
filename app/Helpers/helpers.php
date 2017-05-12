@@ -15,3 +15,21 @@ if(! function_exists('check_current_url')) {
     }
 
 }
+
+if(! function_exists('check_roles')) {
+
+    function check_roles(\App\Models\User $user, array $roles) {
+
+        if(!$user) return false;
+
+        foreach($user->roles as $role) {
+
+            if(in_array($role->name, $roles)) return true;
+
+        }
+
+        return false;
+
+    }
+
+}

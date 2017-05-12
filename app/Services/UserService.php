@@ -19,13 +19,7 @@ class UserService
 
        if(isset($image)) {
 
-           $path = 'images/users';
-
-           $name = $user->id . '.' . $image->clientExtension();
-
-           $image->move(public_path($path), $name);
-
-           $data['image'] = "/" . $path . "/" . $name;
+           $data['image'] = ImageService::move($image, 'images/users', $user->id);
 
        }
 

@@ -19,7 +19,7 @@ class UserService
 
        if(isset($image)) {
 
-           $data['image'] = ImageService::move($image, 'images/users', $user->id);
+           $data['image'] = FileService::move($image, 'images/users', $user->id);
 
        }
 

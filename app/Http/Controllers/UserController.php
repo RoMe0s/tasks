@@ -16,12 +16,11 @@ class UserController extends Controller
 
     public $accessMap = [
         'index' => 'users.read',
-        'create' => 'users.write',
         'store' => 'users.write',
-        'show' => 'users.read',
-        'edit' => 'users.write',
         'update' => 'users.write',
-        'destroy' => 'users.destroy'
+        'destroy' => 'users.destroy',
+        'loadPopup' => 'users.read',
+        'updatePassword' => 'users.write'
     ];
 
     protected $userService;
@@ -73,16 +72,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  UserCreateRequest  $request
@@ -121,28 +110,6 @@ class UserController extends Controller
         FlashMessages::add($status, $message);
 
         return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
     }
 
     /**
@@ -209,7 +176,9 @@ class UserController extends Controller
 
     public function updatePassword(UserUpdatePasswordRequest $request, int $id) {
 
-        User::where('id', $id)->update([
+        $user = User::find($id);
+
+        $user->update([
             'password' => $request->get('password'),
             'forgot_password' => 0
         ]);

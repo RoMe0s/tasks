@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\User\PasswordResetEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ResetRequest;
 use App\Models\User;
 use App\Services\FlashMessages;
+use Illuminate\Support\Facades\Event;
 
 class ForgotPasswordController extends Controller
 {
@@ -32,6 +34,8 @@ class ForgotPasswordController extends Controller
         if($user) {
 
             $user->setForgotten();
+
+            Event::fire(new PasswordResetEvent($user));
 
         } else {
 

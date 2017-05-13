@@ -63,6 +63,16 @@ class Handler extends ExceptionHandler
 
                     break;
 
+                case 403:
+
+                    FlashMessages::add('warning', trans('messages.permissions not allowed'));
+
+                    $redirect = Auth::check() ? route('home') : route('login');
+
+                    return redirect($redirect, 301);
+
+                    break;
+
             }
 
         }

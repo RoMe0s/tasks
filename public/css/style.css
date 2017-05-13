@@ -71,8 +71,15 @@ div.card-block#profile .input-group input {
 
 }
 
-.activator.shareproject {
+.activator.shareproject, button.like-link {
     box-shadow: none;
     border: none;
     outline: none;
+    background: transparent;
+}
+
+div.card-up.normal {
+
+    height: 25%;
+
 }

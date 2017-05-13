@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\Task\TaskCreateEvent;
+use App\Events\User\PasswordResetEvent;
+use App\Listeners\PasswordResetListener;
+use App\Listeners\TaskCreateListener;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,6 +20,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+        TaskCreateEvent::class => [
+            TaskCreateListener::class
+        ],
+        PasswordResetEvent::class => [
+            PasswordResetListener::class
+        ]
     ];
 
     /**

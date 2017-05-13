@@ -48,4 +48,31 @@ class User extends Authenticatable
         $this->save();
 
     }
+
+    public function projects() {
+
+        return $this->belongsToMany(Project::class, 'users_projects');
+
+    }
+
+    public function getImage() {
+
+        if(isset($this->image) &&
+        !empty($this->image) &&
+        is_file(public_path() . $this->image)) {
+
+            return $this->image;
+
+        }
+
+        return asset('images/sample/user.png');
+
+    }
+
+    public function tasks() {
+
+        return $this->hasMany(Task::class);
+
+    }
+
 }

@@ -16,10 +16,10 @@ class CreateUsersProjectsTable extends Migration
     public function up()
     {
         Schema::create('users_projects', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();
-            $table->string('post')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

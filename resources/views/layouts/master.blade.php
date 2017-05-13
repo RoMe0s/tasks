@@ -9,7 +9,7 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Material Design Bootstrap</title>
+    <title>ams.crm</title>
 
     @section('styles')
         @include('partials.styles')

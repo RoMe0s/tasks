@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers\TaskComposer;
 use App\Http\ViewComposers\UserComposer;
 use App\Http\ViewComposers\ProjectComposer;
 use Illuminate\Support\ServiceProvider;
@@ -18,6 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer('*', UserComposer::class);
         View::composer('project.list', ProjectComposer::class);
+        View::composer('project.show', TaskComposer::class);
     }
 
     /**

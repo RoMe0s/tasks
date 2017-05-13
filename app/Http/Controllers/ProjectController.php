@@ -9,8 +9,7 @@ use App\Models\User;
 use App\Services\FlashMessages;
 use App\Services\ProjectService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class ProjectController extends Controller
 {
@@ -31,9 +30,9 @@ class ProjectController extends Controller
         'create' => 'project.write',
         'store' => 'project.write',
         'show' => 'project.read',
-        'edit' => 'project.write',
-        'update' => 'project.write',
-        'destroy' => 'project.destroy'
+        'users' => 'project.users',
+        'storeShare' => 'project.users',
+        'loadCreate' => 'project.write'
     ];
 
     /**
@@ -44,21 +43,11 @@ class ProjectController extends Controller
     public function index()
     {
 
-        $projects = $this->projectService->load(Auth::getUser());
+        $projects = $this->projectService->load($this->user);
 
         $this->data('projects', $projects);
 
         return $this->render('project.list');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -113,41 +102,48 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $project = Project::with(['users'])->find($id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        abort_if(!$project, 404);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if(!check_roles($this->user, ['Administrators'])) {
+
+            abort_if(!$project->users->where('id', $this->user->id)->count(), 403);
+
+        }
+
+        if(check_roles($this->user, ['Administrators', 'Product Owner'])) {
+
+            $roles = Role::pluck('name', 'id')->toArray();
+
+        }
+
+        if(check_roles($this->user, ['Client'])) {
+
+            $roles = Role::whereIn('name', ['Product Owner'])->pluck('name', 'id')->toArray();
+
+
+
+        }
+
+        if(check_roles($this->user, ['R&D'])) {
+
+            $roles = Role::whereIn('name', ['R&D'])->pluck('name', 'id')->toArray();
+
+        }
+
+        if(check_roles($this->user, ['Accountant'])) {
+
+            $roles = Role::whereNotIn('name', ['Administrators', 'Product Owner'])->pluck('name', 'id')->toArray();
+
+        }
+
+        $this->data('roles', $roles);
+
+        $this->data('project_id', $id);
+
+        return $this->render('project.show');
     }
 
     public function share(int $id) {
@@ -193,6 +189,14 @@ class ProjectController extends Controller
         }
 
         return ['status' => $status, 'message' => $status === 'error' ? $message : null, 'refresh' => $status === 'success' ? 'true' : null];
+
+    }
+
+    public function loadCreate(Request $request) {
+
+        $html = view('modals.project.partials.create')->with(ProjectService::loadCreateData())->render();
+
+        return ['status' => 'success', 'html' => $html];
 
     }
 

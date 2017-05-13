@@ -15,5 +15,11 @@ return [
         'write',
         'read',
         'users'
+    ],
+    'task' => [
+        'write',
+        'destroy',
+        'take',
+        'close'
     ]
 ];

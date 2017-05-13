@@ -27,7 +27,25 @@ class Project extends Model
 
     public function getDefaultImage() {
 
-        return url('img/logo/sample_pic.jpg');
+        return url('images/logo/sample_pic.jpg');
+
+    }
+
+    public function getPrice() {
+
+        return isset($this->tasks) && sizeof($this->tasks) ? $this->tasks->avg('price') : 0;
+
+    }
+
+    public function tasks() {
+
+        return $this->hasMany(Task::class);
+
+    }
+
+    public function getUrl() {
+
+        return route('project.show', $this->id);
 
     }
 

@@ -177,5 +177,27 @@
             }
 
         });
+
+        $(document).on("reset-password-event", function() {
+
+            $('form[postAjax="reset-password-event"]').find('input[name="email"]').val('');
+
+        });
+
+        $(document).on("user-added", function(event, response) {
+
+            if(response.html !== undefined &&
+                response.html !== null &&
+                response.html.length) {
+
+                var $tbody = $('div.tab-pane#role_' + response.id).find('tbody');
+                $tbody.find('tr.empty-list').remove();
+                $tbody.append(response.html);
+
+                $('div.modal#newuser').modal('hide');
+
+            }
+
+        });
     </script>
 @endsection

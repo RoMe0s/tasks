@@ -16,9 +16,7 @@ class ProjectService {
 
     public function load(User $user) {
 
-        //TODO
-
-        $projects = Project::with(['users'])->orderBy('created_at', 'DESC');
+        $projects = Project::with(['users', 'tasks'])->orderBy('created_at', 'DESC');
 
         if(!$user->hasRole('Administrators')) {
 
@@ -56,7 +54,7 @@ class ProjectService {
 
             if ($request->hasFile('image')) {
 
-                $project->image = ImageService::move($request->file('image'), 'images/folder');
+                $project->image = FileService::move($request->file('image'), 'images/project');
 
             }
 

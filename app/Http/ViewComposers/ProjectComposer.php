@@ -17,14 +17,6 @@ class ProjectComposer
 
     public function compose(View $view) {
 
-        $user = Auth::user();
-
-        if($user->can('project.write')) {
-
-            $view->with(ProjectService::loadCreateData());
-
-        }
-
     }
 
 }

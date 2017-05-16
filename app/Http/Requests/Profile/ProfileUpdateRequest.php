@@ -28,7 +28,8 @@ class ProfileUpdateRequest extends FormRequest
             'name' => 'required',
             'password' => 'required_with:password_confirmation|confirmed',
             'password_confirmation' => 'required_with:password',
-            'image.name' => 'required_with:image.file'
+            'image.name' => 'required_with:image.file',
+            'image.file' => 'image'
         ];
     }
 }

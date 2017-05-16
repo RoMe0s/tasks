@@ -98,9 +98,7 @@ class TaskController extends Controller
 
         try {
 
-            $task = Task::findOrFail($id);
-
-            $task->delete();
+            $this->taskService->delete($id);
 
         } catch (\Exception $e) {
 

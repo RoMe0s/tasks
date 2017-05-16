@@ -12,16 +12,17 @@ class PasswordResetMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $suser;
 
     /**
-     * Create a new message instance.
-     *
-     * @return void
+     * PasswordResetMail constructor.
+     * @param User $user
      */
     public function __construct(User $user)
     {
-        //
+
+        $this->suser = $user;
+
     }
 
     /**

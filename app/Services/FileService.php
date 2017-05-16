@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 use Illuminate\Http\UploadedFile;
+use File;
 
 class FileService
 {
@@ -23,6 +24,12 @@ class FileService
         $file->move(public_path($folder), $name);
 
         return '/' . $folder . '/' . $name;
+
+    }
+
+    public static function removeFolder($path) {
+
+        File::deleteDirectory($path);
 
     }
 

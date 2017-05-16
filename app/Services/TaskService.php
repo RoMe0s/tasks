@@ -44,7 +44,7 @@ class TaskService
 
             if ($request->hasFile('file')) {
 
-                $task->file = FileService::move($request->file('file'), 'tasks/questions/' . $task->id . $task->id);
+                $task->file = FileService::move($request->file('file'), 'tasks/' . $task->id . '/questions');
 
                 $task->save();
 
@@ -96,7 +96,7 @@ class TaskService
 
             if ($request->hasFile('file')) {
 
-                $task->result = FileService::move($request->file('file'), 'tasks/results/' . $task->id);
+                $task->result = FileService::move($request->file('file'), 'tasks/' . $task->id . '/results');
 
             } elseif ($request->has('link')) {
 
@@ -113,6 +113,65 @@ class TaskService
         }
 
         return $task;
+
+    }
+
+    public function delete($id) {
+
+        try {
+
+            $task = Task::findOrFail($id);
+
+//            $this->_copy($task);
+
+            $task->delete();
+
+            FileService::removeFolder(public_path('tasks/' . $id));
+
+        } catch (\Exception $e) {
+
+            throw new \Exception($e->getMessage());
+
+        }
+
+        return true;
+
+    }
+
+    private function _copy($task) {
+
+        try {
+
+            $input = $task->get([
+                'name',
+                'description',
+                'type',
+                'status',
+                'post',
+                'price',
+                'file',
+                'result',
+                'start_date',
+                'end_date',
+                'created_at',
+                'updated_at'
+            ])->first()->toArray();
+
+            $input['role'] = $task->role->name;
+
+            $input['project'] = $task->project->name;
+
+            $input['user'] = isset($task->user) ? $task->user->email : null;
+
+            $input = array_filter($input);
+
+            DB::connection('mysql2')->table('tasks')->insert($input);
+
+        } catch (\Exception $e) {
+
+            throw new \Exception($e->getMessage());
+
+        }
 
     }
 

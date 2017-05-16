@@ -1,6 +1,1 @@
-/* ROTATING CARDS */
-$('.rotate-btn').on('click', function () {
-    var cardId = $(this).attr('data-card');
-    $('#' + cardId).toggleClass('flipped');
-
-});
+$(".rotate-btn").on("click",function(){var t=$(this).attr("data-card");$("#"+t).toggleClass("flipped")});

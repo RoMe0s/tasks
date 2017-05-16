@@ -18,6 +18,11 @@ _ide_helper_models.php
 /public/assets/*
 /.sass-cache
 npm-debug.log
+/public/images/*
+/public/css/*
+/public/js/*
+/public/font/*
+/storage/*
 =======
 =======
 >>>>>>> 1f98a2b8cc386a9dd705263a9f7f680643c6fcc8

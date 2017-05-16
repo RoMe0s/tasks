@@ -30,7 +30,8 @@ class ProjectCreateRequest extends FormRequest
 
         return [
             'name' => 'required|max:60|min:3|string|unique:projects',
-            'description' => 'required|max:195|string'
+            'description' => 'required|max:195|string',
+            'image' => 'image'
         ];
     }
 }

@@ -1,0 +1,91 @@
+/* YOUR CUSTOM STYLES */
+
+.participants {
+	color: lightgray;
+	font-size: 0.7rem;
+}
+
+.padd1ng01 {
+padding: 0.1rem;
+}
+
+.card-up {
+	border-radius: 3px 3px 0 0;
+}
+.fixed-btn{
+    position: fixed;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 998;
+}
+/*Цвет задач карточки*/
+
+.urgent {
+	background-color: #ff4444;
+}
+
+.normal {
+	background-color: #00C851;
+}
+
+.noturgent {
+	background-color: #0099CC;
+}
+
+.price {
+	float: right;
+    margin-top: 0.8rem;
+    background: white;
+    margin-right: 2rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.totalprojectbudget {
+	position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(76, 175, 80, 0.7);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    color: white;
+    box-shadow: 1px 7px 6px rgba(0,0,0,0.3);
+}
+
+.timer {
+	float: left;
+    margin-top: 0.8rem;
+    color: white;
+    margin-left: 1rem;
+    padding: 0.5rem;
+}
+
+.removetask {
+    float: right;
+    color: #ff4444!important;
+}
+
+div.card-block#profile .input-group input {
+
+    padding-left: 3rem;
+
+}
+
+.activator.shareproject, button.like-link {
+    box-shadow: none;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+div.card-up.normal {
+
+    height: 25%;
+
+}
+
+tbody.users-list tr:not([data-selected]):not([data-empty]) {
+
+    display: none;
+
+}

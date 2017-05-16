@@ -1,9 +1,1 @@
-//Collapse other tabs for popout 
-$(function () {
-    var active = true;
-
-    $('#accordion').on('show.bs.collapse', function () {
-        if (active) $('#accordion .in').collapse('hide');
-    });
-
-});
+$(function(){$("#accordion").on("show.bs.collapse",function(){$("#accordion .in").collapse("hide")})});

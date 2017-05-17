@@ -32,6 +32,8 @@ class UserController extends Controller
 
         $this->userService = $userService;
 
+        $this->fillMeta('Пользователи');
+
     }
 
     /**

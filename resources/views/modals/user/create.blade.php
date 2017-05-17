@@ -22,13 +22,13 @@
             <div class="modal-body">
                 {!! Form::open(['method' => 'POST', 'route' => 'users.store', 'class' => 'form-inline', 'ajax', 'postAjax' => 'user-added']) !!}
                 <div class="md-form form-group w-100">
-                    {!! Form::text('name', null, array('placeholder' => trans('labels.name'), 'class' => 'form-control w-100')) !!}
+                    {!! Form::text('name', null, array('placeholder' => trans('labels.username'), 'class' => 'form-control w-100')) !!}
                 </div>
                 <div class="md-form form-group w-100">
                     {!! Form::text('email', null, array('placeholder' => trans('labels.email'), 'class' => 'form-control w-100')) !!}
                 </div>
                 <div class="md-form form-group w-100">
-                    {!! Form::select('role', $roles->pluck('name', 'id')->toArray(), null, array('class' => 'mdb-select w-100', 'placeholder' => trans('labels.group'))) !!}
+                    {!! Form::select('role', $roles->pluck('name', 'id')->toArray(), null, array('class' => 'mdb-select w-100', 'placeholder' => trans('messages.choose group'))) !!}
                 </div>
                 <div class="md-form form-group w-100">
                             <span class="input-group-btn w-100">

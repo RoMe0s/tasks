@@ -20,7 +20,7 @@
 <div class="modal-body">
     <div class="text-center">
         <i class="fa fa-upload fa-4x mb-1 animated rotateIn"></i>
-        {!! Form::text('link', null, ['class' => 'form-control end-task-link', 'placeholder' => 'link']) !!}
+        {!! Form::text('link', null, ['class' => 'form-control end-task-link', 'placeholder' => trans('labels.link')]) !!}
         <div class="md-form file-field end-task-file" style="display: none">
             <div class="btn btn-success btn-sm">
                                 <span>

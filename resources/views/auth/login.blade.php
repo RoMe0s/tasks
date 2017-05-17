@@ -12,24 +12,24 @@
                 <div class="md-form">
                     <i class="fa fa-envelope prefix"></i>
                     {!! Form::input('email', 'email', null, array('id' => 'email', 'class' => 'form-control', 'required' => true)) !!}
-                    <label for="email">Ваш email</label>
+                    <label for="email">@lang('labels.your email')</label>
                 </div>
 
                 <div class="md-form">
                     <i class="fa fa-lock prefix"></i>
                     {!! Form::input('password', 'password', null, array('id' => 'pass', 'class' => 'form-control', 'required' => true)) !!}
-                    <label for="pass">Ваш пароль</label>
+                    <label for="pass">@lang('labels.your password')</label>
                 </div>
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-unique">
-                        Войти
+                        @lang('labels.sign in')
                     </button>
                 </div>
                 <div class="text-center">
                     <button type="button" class="btn-flat btn-sm waves-effect" data-toggle="modal"
                             data-target="#adminfeedback">
-                        Забыли пароль?
+                        @lang('messages.forgot the password')
                     </button>
                 </div>
                 {!! Form::close() !!}

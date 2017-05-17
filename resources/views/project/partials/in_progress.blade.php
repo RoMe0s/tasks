@@ -1,8 +1,8 @@
-@isset($tasks['in_progress'])
-    <div class="col-md-4" id="in_progress">
-        <div class="header text-center">
-            <h4>In Progress</h4>
-        </div>
+<div class="col-md-4" id="in_progress">
+    <div class="header text-center">
+        <h4>In Progress</h4>
+    </div>
+    @isset($tasks['in_progress'])
         @foreach($tasks['in_progress'] as $key => $task)
             <div class="card-wrapper" data-task_id="{!! $task->id !!}" data-header_id="in_progress">
                 <div id="sample_project_card_{!! $key !!}_in_progress" class="card-rotating effect__click">
@@ -51,7 +51,7 @@
                             <button type="submit" class="like-link">
                                 @lang('labels.end task')
                             </button>
-                            {!! Form::close() !!}
+                        {!! Form::close() !!}
                         <p>
                             <!--Triggering button-->
                             <a class="rotate-btn" data-card="sample_project_card_{!! $key !!}_in_progress">
@@ -62,7 +62,11 @@
                     <!--/.Back Side-->
                 </div>
             </div>
-    @endforeach
-    <!--/.Rotating card-->
-    </div>
-@endisset
+        @endforeach
+        @else
+            <h5 class="text-center">
+                @lang('labels.empty')
+            </h5>
+        @endisset
+        <!--/.Rotating card-->
+</div>

@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
+use Meta;
 
 class Controller extends BaseController
 {
@@ -24,6 +25,9 @@ class Controller extends BaseController
     function __construct()
     {
         $this->user = Auth::user();
+
+        $this->fillMeta();
+
     }
 
     /**
@@ -128,6 +132,18 @@ class Controller extends BaseController
 
         return true;
 
+    }
+
+    /**
+     * @param $model
+     * @param $type
+     */
+    public function fillMeta($title = null)
+    {
+
+        $title = isset($title) ? $title . ' - ' . config('app.name') : config('app.name');
+
+        Meta::title($title);
     }
 
 }

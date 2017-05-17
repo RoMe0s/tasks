@@ -1,8 +1,8 @@
-@isset($tasks['done'])
-    <div class="col-md-4" id="done">
-        <div class="header text-center">
-            <h4>Done</h4>
-        </div>
+<div class="col-md-4" id="done">
+    <div class="header text-center">
+        <h4>Done</h4>
+    </div>
+    @isset($tasks['done'])
         @foreach($tasks['done'] as $key => $task)
             <div class="card-wrapper" data-task_id="{!! $task->id !!}" data-header_id="done">
                 <div id="sample_project_card_{!! $key !!}_done" class="card-rotating effect__click">
@@ -58,7 +58,11 @@
                     <!--/.Back Side-->
                 </div>
             </div>
-    @endforeach
-    <!--/.Rotating card-->
-    </div>
-@endisset
+        @endforeach
+        @else
+            <h5 class="text-center">
+                @lang('labels.empty')
+            </h5>
+        @endisset
+        <!--/.Rotating card-->
+</div>

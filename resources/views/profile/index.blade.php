@@ -20,22 +20,22 @@
                     <div class="md-form ">
                         <i class="fa fa-user prefix"></i>
                         {!! Form::text('name', null, array('id' => 'name', 'class' => 'form-control')) !!}
-                        <label for="name">Имя пользователя</label>
+                        <label for="name">@lang('labels.username')</label>
                     </div>
                     <div class="md-form ">
                         <i class="fa fa-envelope prefix"></i>
                         {!! Form::input('email', 'email', null, array('id' => 'email', 'class' => 'form-control')) !!}
-                        <label for="email">Email</label>
+                        <label for="email">@lang('labels.email')</label>
                     </div>
                     <div class="md-form ">
                         <i class="fa fa-lock prefix"></i>
                         {!! Form::input('password', 'password', '', array('id' => 'password', 'class' => 'form-control')) !!}
-                        <label for="password">Пароль</label>
+                        <label for="password">@lang('labels.password')</label>
                     </div>
                     <div class="md-form ">
                         <i class="fa fa-lock prefix"></i>
                         {!! Form::input('password', 'password_confirmation', '', array('id' => 'password_confirmation', 'class' => 'form-control')) !!}
-                        <label for="password_confirmation">Подтверждение пароля</label>
+                        <label for="password_confirmation">@lang('labels.password confirmation')</label>
                     </div>
                     <div class="thumbnail col-xs-12">
                         <img src="{!! $model->image !!}" style="max-width: 250px;" />
@@ -49,12 +49,12 @@
                             {!! Form::file('image[file]', ['id' => 'image-input']) !!}
                         </div>
                         <div class="file-path-wrapper">
-                            {!! Form::text('image[name]', $model->image, array('placeholder' => 'Загрузите свое фото', 'class' => 'file-path validate')) !!}
+                            {!! Form::text('image[name]', $model->image, array('placeholder' => trans('labels.upload your image'), 'class' => 'file-path validate')) !!}
                         </div>
                     </div>
                     <br>
                     <div class="md-form" style="float:right;">
-                        {!! Form::submit('Сохранить', array('class' => 'btn btn-success waves-effect waves-light')) !!}
+                        {!! Form::submit(trans('labels.save'), array('class' => 'btn btn-success waves-effect waves-light')) !!}
                     </div>
 
                     {!! Form::close() !!}

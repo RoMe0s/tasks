@@ -51,18 +51,7 @@ $(document).on("task-deleted", function(e, response) {
         response.task_id !== null) {
 
 
-        $('div.card-wrapper[data-task_id="' + response.task_id + '"]').fadeOut("slow", function() {
-
-            var header_id = $(this).attr('data-header_id'),
-                length = $('div.card-wrapper[data-header_id="' + header_id + '"]').lenght;
-
-            if(!length) {
-
-                $('#' + header_id).fadeOut("fast");
-
-            }
-
-        });
+        $('div.card-wrapper[data-task_id="' + response.task_id + '"]').fadeOut("slow");
 
         $('div.modal#submitremove').modal('hide');
 

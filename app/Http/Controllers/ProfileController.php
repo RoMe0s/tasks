@@ -17,6 +17,9 @@ class ProfileController extends Controller
         parent::__construct();
 
         $this->userService = $userService;
+
+        $this->fillMeta('Настройки');
+
     }
 
     public function index() {
@@ -39,7 +42,7 @@ class ProfileController extends Controller
 
             $status = 'error';
 
-            $message = trans('messages.save error');
+            $message = trans('messages.save bad');
 
         }
 

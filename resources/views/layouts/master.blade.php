@@ -9,7 +9,7 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>ams.crm</title>
+    {!! Meta::render() !!}
 
     @section('styles')
         @include('partials.styles')

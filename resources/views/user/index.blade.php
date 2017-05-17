@@ -18,8 +18,7 @@
                             <li class="nav-item">
                                 <a class="nav-link @if($key === 0) active @endif" data-toggle="tab"
                                    href="#role_{!! $role->id !!}" role="tab">
-                                    <img src="{!! $role->image !!}" alt="{!! $role->name !!}" class="rounded-circle"
-                                         style="margin-bottom: 10px;">
+                                    <img src="{!! $role->image !!}" alt="{!! $role->name !!}" class="rounded-circle" style="margin-bottom: 10px;">
                                     {!! $role->name !!}
                                 </a>
                             </li>
@@ -38,7 +37,7 @@
                                         <th>#</th>
                                         <th>@lang('labels.name')</th>
                                         <th>@lang('labels.email')</th>
-                                        <th>@lang('labels.acrions')</th>
+                                        <th>@lang('labels.actions')</th>
                                     </tr>
                                     </thead>
                                     <tbody>

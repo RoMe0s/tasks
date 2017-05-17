@@ -53,7 +53,7 @@
                                 <a href="{!! route('project.show', $project) !!}" title="{{$project->name}}"
                                    class="black-text d-flex flex-row-reverse">
                                     <h5 class="waves-effect p-2">
-                                        @lang('front_labels.to project')
+                                        @lang('labels.to project')
                                         <i class="fa fa-chevron-right"></i>
                                     </h5>
                                 </a>

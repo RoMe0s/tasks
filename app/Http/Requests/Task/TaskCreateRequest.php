@@ -23,10 +23,8 @@ class TaskCreateRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route()->parameter('project', null);
-
         return [
-            'name' => 'required|max:60|min:3|string|unique:tasks,name,' . $id . ',project_id',
+            'name' => 'required|max:60|min:3|string',
             'description' => 'required|max:195|string',
             'type' => 'required',
             'post' => 'required',

@@ -33,7 +33,7 @@ class Project extends Model
 
     public function getPrice() {
 
-        return isset($this->tasks) && sizeof($this->tasks) ? $this->tasks->avg('price') : 0;
+        return isset($this->tasks) && sizeof($this->tasks) ? $this->tasks->sum('price') : 0;
 
     }
 

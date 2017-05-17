@@ -11,14 +11,9 @@
 @section('content')
     <div class="container-fluid" style="padding-top: 85px;">
         <div class="row">
-            @if(!sizeof($tasks))
-                <h4 class="text-center col-md-12" style="margin-top: 15px;">
-                    @lang('labels.empty')
-                </h4>
-            @endif
-        @include('project.partials.todo')
-        @include('project.partials.in_progress')
-        @include('project.partials.done')
+            @include('project.partials.todo')
+            @include('project.partials.in_progress')
+            @include('project.partials.done')
         </div>
     </div>
 @endsection

@@ -47,6 +47,8 @@ class ProjectController extends Controller
 
         $this->data('projects', $projects);
 
+        $this->fillMeta('Список проектов');
+
         return $this->render('project.list');
     }
 
@@ -123,8 +125,6 @@ class ProjectController extends Controller
 
             $roles = Role::whereIn('name', ['Product Owner'])->pluck('name', 'id')->toArray();
 
-
-
         }
 
         if(check_roles($this->user, ['R&D'])) {
@@ -142,6 +142,8 @@ class ProjectController extends Controller
         $this->data('roles', $roles);
 
         $this->data('project_id', $id);
+
+        $this->fillMeta($project->name);
 
         return $this->render('project.show');
     }

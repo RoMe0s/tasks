@@ -8,7 +8,7 @@
 
 <!-- Material Design Bootstrap -->
 
-<link href="{!! asset('css/mdb.min.css') !!}" rel="stylesheet">
+<link href="{!! asset('css/mdb.css') !!}" rel="stylesheet">
 
 <!-- Your custom styles (optional) -->
 

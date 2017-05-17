@@ -1,16 +1,16 @@
 /* YOUR CUSTOM STYLES */
 
 .participants {
-	color: lightgray;
-	font-size: 0.7rem;
+    color: lightgray;
+    font-size: 0.7rem;
 }
 
 .padd1ng01 {
-padding: 0.1rem;
+    padding: 0.1rem;
 }
 
 .card-up {
-	border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
 }
 .fixed-btn{
     position: fixed;
@@ -21,19 +21,63 @@ padding: 0.1rem;
 /*Цвет задач карточки*/
 
 .urgent {
-	background-color: #ff4444;
+    background-color: #ff4444;
 }
 
 .normal {
-	background-color: #00C851;
+    background-color: #00C851;
 }
 
 .noturgent {
-	background-color: #0099CC;
+    background-color: #0099CC;
 }
 
+/* Карточки contacts.html*/
+
+a.messenger {
+}
+a.messenger:hover {
+    color:rgba(174, 19, 123, 0.5);
+}
+a.messenger:focus {
+    text-decoration: none;
+    color: ;
+}
+
+.whatsapp {
+    color:#25D366;
+    padding-right: 0.5rem;
+}
+
+.telegram{
+    color:#0088cc;
+    padding-right: 0.5rem;
+}
+
+.mainbrand {
+    color:#ad137a!important;
+}
+
+.contacticons {
+    padding-top: 0.5rem;
+}
+
+div.moderate {
+    position: absolute;
+    top: -1rem;
+    right: -0.4rem;
+    color: gray;
+}
+div.verified {
+    position: absolute;
+    top: -1rem;
+    right: -0.4rem;
+    color: green;
+}
+
+
 .price {
-	float: right;
+    float: right;
     margin-top: 0.8rem;
     background: white;
     margin-right: 2rem;
@@ -42,7 +86,7 @@ padding: 0.1rem;
 }
 
 .totalprojectbudget {
-	position: absolute;
+    position: absolute;
     top: 0.5rem;
     right: 0.5rem;
     background: rgba(76, 175, 80, 0.7);
@@ -53,7 +97,7 @@ padding: 0.1rem;
 }
 
 .timer {
-	float: left;
+    float: left;
     margin-top: 0.8rem;
     color: white;
     margin-left: 1rem;
@@ -65,9 +109,9 @@ padding: 0.1rem;
     color: #ff4444!important;
 }
 
-div.card-block#profile .input-group input {
+tbody.users-list tr:not([data-selected]):not([data-empty]) {
 
-    padding-left: 3rem;
+    display: none;
 
 }
 
@@ -76,16 +120,4 @@ div.card-block#profile .input-group input {
     border: none;
     outline: none;
     background: transparent;
-}
-
-div.card-up.normal {
-
-    height: 25%;
-
-}
-
-tbody.users-list tr:not([data-selected]):not([data-empty]) {
-
-    display: none;
-
 }

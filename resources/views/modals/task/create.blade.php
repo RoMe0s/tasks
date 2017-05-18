@@ -8,7 +8,7 @@
 ?>
 <div class="modal fade" id="new_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        {!! Form::open(['method' => 'POST', 'route' => 'task.store', 'ajax']) !!}
+        {!! Form::open(['method' => 'POST', 'route' => 'task.store', 'ajax', 'preAjax' => 'beforeTaskCreate', 'postAjax' => 'afterTaskCreate']) !!}
         {!! Form::hidden('project_id', $project_id) !!}
         <div class="modal-content">
             <div class="modal-header">

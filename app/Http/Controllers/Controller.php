@@ -141,7 +141,7 @@ class Controller extends BaseController
     public function fillMeta($title = null)
     {
 
-        $title = isset($title) ? $title . ' - ' . config('app.name') : config('app.name');
+        $title = isset($title) ? $title : config('app.name');
 
         Meta::title($title);
     }

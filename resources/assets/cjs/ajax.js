@@ -23,12 +23,20 @@ $(document).on("submit", 'form[ajax]', function(event) {
 
     $.ajax({
 
+        beforeSend: function() {
+
+            if($form.attr('preAjax') !== undefined) {
+
+                $(document).trigger($form.attr('preAjax'), [event]);
+
+            }
+
+        },
         url: $form.attr("action"),
         type: $form.attr("method"),
         data: formData,
         contentType: false,
         processData: false
-
 
     }).done(function(response) {
 

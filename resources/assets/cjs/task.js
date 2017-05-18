@@ -101,3 +101,21 @@ $(document).on('click', 'a.or-use-file', function() {
     }
 
 });
+
+$(document).on("beforeTaskCreate", function(event, real_event) {
+
+    $('div.modal#new_task').modal('hide');
+
+});
+
+$(document).on("afterTaskCreate", function(event, response) {
+
+    console.log(response);
+
+    if(response.status !== 'success') {
+
+        $('div.modal#new_task').modal();
+
+    }
+
+});

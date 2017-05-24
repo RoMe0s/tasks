@@ -108,14 +108,32 @@ $(document).on("beforeTaskCreate", function(event, real_event) {
 
 });
 
-$(document).on("afterTaskCreate", function(event, response) {
+$(document).on("errorTaskCreate", function(event, response) {
 
-    console.log(response);
+    var timeout = setTimeout(function() {
+
+        $('div.modal#new_task').modal('show');
+
+        clearTimeout(timeout);
+
+    }, 750);
+
+});
+
+
+$(document).on("afterTaskCreate", function(event, response) {
 
     if(response.status !== 'success') {
 
-        $('div.modal#new_task').modal();
+        var timeout = setTimeout(function() {
+
+            $('div.modal#new_task').modal('show');
+
+            clearTimeout(timeout);
+
+        }, 750);
 
     }
 
 });
+

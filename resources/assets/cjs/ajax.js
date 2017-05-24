@@ -77,6 +77,12 @@ $(document).on("submit", 'form[ajax]', function(event) {
     }).fail(function(response) {
 
         response = response !== undefined ? response.responseJSON : {};
+        
+        if($form.attr('errorAjax') !== undefined) {
+
+            $(document).trigger($form.attr('errorAjax'), [response]);
+
+        }
 
         var passed_errors = [];
 

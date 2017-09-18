@@ -38,6 +38,30 @@ class CreateTasksTable extends Migration
 
             $table->timestamps();
         });
+
+        Schema::connection('mysql2')->create('tasks', function (Blueprint $table) {
+
+            $table->increments('id');
+            $table->string('name', 60);
+            $table->string('description', 195);
+            $table->enum('type', ['urgent', 'not_urgent', 'current']);
+            $table->enum('status', ['todo', 'in_progress', 'done']);
+            $table->string('post');
+            $table->string('price', 255);
+            $table->string('file')->nullable();
+            $table->string('result')->nullable();
+
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
+
+            $table->string('role', 255)->nullable();
+
+            $table->string('project', 255)->nullable();
+
+            $table->string('user', 255)->nullable();
+
+        });
+
     }
 
     /**
@@ -48,5 +72,6 @@ class CreateTasksTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tasks');
+        Schema::connection('mysql2')->dropIfExists('tasks');
     }
 }

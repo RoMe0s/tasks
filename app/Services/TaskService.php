@@ -122,7 +122,7 @@ class TaskService
 
             $task = Task::findOrFail($id);
 
-//            $this->_copy($task);
+            $this->_copy($task);
 
             $task->delete();
 
